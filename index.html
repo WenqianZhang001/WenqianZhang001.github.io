@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wenqian Zhang — My Website</title>
+  <meta name="description" content="Portfolio of Wenqian Zhang: projects, publications, and contact." />
+
+  <style>
+    :root{
+      --bg:#f7f8fc;
+      --card:#ffffff;
+      --text:#0f172a;     /* slate-900 */
+      --muted:#475569;    /* slate-600 */
+      --accent:#6d28d9;   /* violet-700 */
+      --accent2:#06b6d4;  /* cyan-500 */
+      --ring: rgba(109,40,217,.18);
+      --shadow: 0 14px 40px rgba(15,23,42,.08);
+      --radius: 18px;
+
+      /* ✅ narrower page width so sections don't feel stretched */
+      --max: 920px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      line-height:1.6;
+
+      background:
+        radial-gradient(900px 520px at 12% 10%, rgba(109,40,217,.16), transparent 60%),
+        radial-gradient(780px 520px at 88% 18%, rgba(6,182,212,.14), transparent 60%),
+        radial-gradient(900px 520px at 50% 105%, rgba(109,40,217,.10), transparent 60%),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 65%, #ffffff 100%);
+    }
+
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 70px}
+
+    /* ✅ (optional) cap section-card width a bit more and center */
+    section .card{
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* NAV */
+    .nav{
+      position:sticky;
+      top:14px;
+      z-index:10;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+
+      padding:10px 14px;
+      border-radius:999px;
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,.78);
+      border:1px solid rgba(15,23,42,.08);
+      box-shadow: 0 10px 26px rgba(15,23,42,.08);
+      margin-bottom:24px;
+    }
+
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800}
+    .dot{
+      width:12px; height:12px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 6px rgba(109,40,217,.10);
+      flex: 0 0 auto;
+    }
+
+    .links{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .links a{
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+      font-weight:600;
+      font-size:14px;
+    }
+    .links a:hover{
+      color:var(--text);
+      border-color: rgba(15,23,42,.10);
+      background: rgba(15,23,42,.03);
+    }
+
+    /* HERO */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+    }
+
+    .card{
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(15,23,42,.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .badge{
+      display:inline-flex; gap:8px; align-items:center;
+      border:1px solid rgba(15,23,42,.10);
+      background: rgba(15,23,42,.03);
+      padding:8px 12px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight:600;
+    }
+
+    h1{margin:14px 0 10px; font-size: clamp(30px, 4vw, 46px); line-height:1.15}
+    .sub{color:var(--muted); font-size: 16px; max-width: 60ch}
+
+    .cta{display:flex; gap:12px; margin-top:16px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.7);
+      color: var(--text);
+      font-weight: 700;
+      cursor:pointer;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn.primary{
+      border-color: transparent;
+      color: white;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 14px 30px rgba(109,40,217,.18);
+    }
+
+    .mini{display:grid; gap:12px; height:100%; align-content:start}
+
+    /* SECTIONS */
+    section{margin-top:18px}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:12px;
+      margin: 10px 2px;
+    }
+    .section-title h2{margin:0; font-size:22px}
+    .section-title p{margin:0; color:var(--muted); font-size:14px}
+
+    /* Bullet list style like your screenshot */
+    .bullets{
+      margin: 0;
+      padding-left: 20px;
+      color: var(--text);
+    }
+    .bullets > li{
+      margin: 10px 0;
+    }
+    .bullets li em{color:var(--muted)}
+    .bullets li strong{font-weight:800}
+    .bullets ul{
+      margin: 8px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      list-style: circle;
+    }
+
+    footer{
+      margin-top:24px;
+      color: var(--muted);
+      text-align:center;
+      font-size: 13px;
+    }
+
+    html{scroll-behavior:smooth}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <!-- NAV -->
+    <div class="nav">
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Wenqian Zhang</span>
+      </div>
+
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#educations">Educations</a>
+        <a href="#publications">Publications</a>
+        <a href="#experiences">Experiences</a>
+        <a href="#awards">Awards &amp; Fellowships</a>
+      </div>
+    </div>
+
+    <!-- HERO / ABOUT -->
+    <section id="about">
+      <div class="hero">
+        <div class="card">
+          <span class="badge">👋 Open to internships / research</span>
+          <h1>About Me</h1>
+          <p class="sub">
+            I’m <strong>Wenqian Zhang</strong>, a 4th-year <strong>undergraduate Electrical Engineering</strong> student at <strong>University of California, San Diego</strong>.
+            I'm currently working as a research assitant in <strong>Prof. Xinyu Zhang's</strong> lab, where I focus on wireless communication and sensing, systems and FPGA implementation, and machine learning.
+          </p>
+          <div class="cta">
+            <a class="btn primary" href="#projects">View projects</a>
+            <a class="btn" href="#publications">Publications</a>
+            <a class="btn" href="#awards">Awards</a>
+          </div>
+        </div>
+
+        <div class="mini">
+          <div class="card" style="text-align:center">
+
+            <!-- YOUR PHOTO -->
+            <img src="myphoto.jpg"
+                alt="Your Name"
+                style="
+                  width:150px;
+                  height:150px;
+                  object-fit:cover;
+                  border-radius:50%;
+                  margin-bottom:20px;
+                  box-shadow:0 12px 30px rgba(0,0,0,.12);
+                ">
+
+            <!-- CONTACT INFO -->
+            <ul class="bullets"
+                style="list-style:none;padding-left:0;text-align:left;margin-top:10px">
+
+              <li><strong>Email:</strong> wez040@ucsd.edu</li>
+              <li><strong>GitHub:</strong> <a href="https://github.com/WenqianZhang001" target="_blank">github.com/WenqianZhang001</a></li>
+              <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/wenqian-zhang-112b01347" target="_blank"> linkedin.com/in/wenqian-zhang </a> </li>
+
+            </ul>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-title">
+        <h2>📁 Projects</h2>
+        <p>Research projects</p>
+      </div>
+
+      <div class="card">
+        <ul class="bullets">
+          <li>
+            <em>Jul. 2025 – Feb. 2026</em> — <strong>FlowForm: Scalable Passive Metasurface Networking System</strong>
+            <ul>
+              <li>Designed and implemented a multi-hop passive metasurface network to extend mmWave transmission coverage in NLoS and obstacle-rich environments.</li>
+              <li>Integrated SDR platforms and FPGA hardware for real-world validation; achieved 10–15 dB RSS gain in dead zones.</li>
+            </ul>
+          </li>
+
+          <li>
+            <em>Apr. 2025 – Present</em> — <strong>RayNet: Distributed mmWave SDR Network (FPGA upgrades)</strong>
+            <ul>
+              <li>Designed FPGA modules (Verilog) for CIR estimation and carrier frequency offset (CFO) estimation/compensation.</li>
+              <li>Validated antenna patterns via experimental measurement; improved SNR and robustness.</li>
+            </ul>
+          </li>
+
+          <li>
+            <em>Apr. 2025 – Jul. 2025</em> — <strong>MetaPolar: Passive mmWave Radar-Readable Metasurface for Sensing</strong>
+            <ul>
+              <li>Designed passive backscattering tags for robust wireless sensing and reflection control.</li>
+              <li>Evaluated indoor/outdoor performance; achieved average 17 dB RSS gain in cross-polarized reflections.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EDUCATIONS -->
+    <section id="educations">
+      <div class="section-title">
+        <h2>🎓 Educations</h2>
+        <p>UCSD</p>
+      </div>
+      <div class="card">
+        <ul class="bullets">
+          <li>
+            <em>Sept. 2022 – Jun. 2026</em>, <strong>University of California, San Diego (UCSD)</strong>
+            <ul>
+              <li>B.S. in Electrical Engineering and Applied Math; GPA: 3.944/4.000</li>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications">
+      <div class="section-title">
+        <h2>📄 Publications</h2>
+        <p>Peer-reviewed + in progress</p>
+      </div>
+
+      <div class="card">
+        <ul class="bullets">
+          <li>
+            <em>Dec. 2024</em> — <strong>Design and Implementation of IIR Filters for Power Line Interference Removal in Intramuscular EMG Signals</strong>
+            <ul>
+              <li>Wenqian Zhang</li>
+              <li>SPCT ’24: Proceedings of the 2024 4th International Conference on Signal Processing and Communication Technology</li>
+              <li>DOI: <a href="https://doi.org/10.1145/3712464.3712465" target="_blank" rel="noreferrer">10.1145/3712464.3712465</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <em>In progress</em> — <strong>FlowForm: Passive Networked Metasurfaces</strong>
+            <ul>
+              <li>Submitted to ACM SIGCOMM 2026 (Feb. 2026)</li>
+            </ul>
+          </li>
+
+      
+        </ul>
+      </div>
+    </section>
+
+    <!-- EXPERIENCES -->
+    <section id="experiences">
+      <div class="section-title">
+        <h2>🔬 Experiences</h2>
+        <p>UCSD research</p>
+      </div>
+
+      <div class="card">
+        <ul class="bullets">
+          <li>
+            <em>Apr. 2025 – Present</em> — Research Assistant, Center for Wireless Communications, Prof. Xinyu Zhang’s Lab
+            <ul>
+            </ul>
+          </li>
+          <li>
+            <em>Sept. 2024 – Jun. 2025</em> — Research Assistant, Prof. Prasad Gudem’s UCSD RF IC Design Group
+            <ul>
+            </ul>
+          </li> 
+        </ul>
+      </div>
+    </section>
+
+    <!-- AWARDS & FELLOWSHIPS -->
+    <section id="awards">
+      <div class="section-title">
+        <h2>🏆 Awards &amp; Fellowships</h2>
+        <p>Honors</p>
+      </div>
+      <div class="card">
+        <ul class="bullets">
+          <li><em>Sept. 2022 – Present</em> — <strong>Provost Honors</strong>, UCSD</li>
+          <li><em>Apr. 2023</em> — <strong>Second Prize</strong>, San Diego’s Largest Hardware Hackathon (UCSD)</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> wez040@ucsd.edu • Built with HTML/CSS/JS
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
